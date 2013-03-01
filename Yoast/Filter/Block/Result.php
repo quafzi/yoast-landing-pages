@@ -24,11 +24,9 @@ class Yoast_Filter_Block_Result extends Mage_Catalog_Block_Product_List
 
             if ($this->getAttributeName()){
                 $attribute = $this->getAttributeName();
-            } else {
-                $attribute = 'color' ;
+                $collection->addAttributeToFilter($attribute, array('like' => '%'.$value.'%'));
             }
 
-            $collection->addAttributeToFilter($attribute, array('like' => '%'.$value.'%'));
             $collection->addAttributeToSelect('attribute_set_ids');
 
             $_filters = Mage::getSingleton('Yoast_Filter/Layer')->getState()->getFilters();
