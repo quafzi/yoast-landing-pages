@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Yoast_Filter>
+            <version>0.0.1</version>
+        </Yoast_Filter>
+    </modules>
+
+    <global>
+        <blocks>
+            <Yoast_Filter>
+                <class>Yoast_Filter_Block</class>
+            </Yoast_Filter>
+        </blocks>
+
+        <models>
+            <Yoast_Filter>
+                <class>Yoast_Filter_Model</class>
+            </Yoast_Filter>
+        </models>
+
+        <helpers>
+            <Yoast_Filter>
+                <class>Yoast_Filter_Helper</class>
+            </Yoast_Filter>
+        </helpers>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <filter>
+                        <type>singleton</type>
+                        <class>Yoast_Filter_Controller_Router</class>
+                        <method>initControllerRouters</method>
+                    </filter>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+    </global>
+
+    <frontend>
+        <routers>
+            <filter>
+                <use>standard</use>
+                <args>
+                    <module>Yoast_Filter</module>
+                    <frontName>f</frontName>
+                </args>
+            </filter>
+        </routers>
+
+        <layout>
+            <updates>
+                <Yoast_Filter>
+                    <file>filter.xml</file>
+                </Yoast_Filter>
+            </updates>
+        </layout>
+    </frontend>
+</config>

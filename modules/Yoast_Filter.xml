@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Yoast_Filter>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Yoast_Filter>
+    </modules>
+</config>

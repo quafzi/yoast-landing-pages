@@ -1,0 +1,4 @@
+modules/Yoast_Filter.xml app/etc/modules/Yoast_Filter.xml
+frontend/base/default/layout/filter.xml app/design/frontend/base/default/layout/filter.xml
+frontend/base/default/template/filter/view.phtml app/design/frontend/base/default/template/filter/view.phtml
+Yoast/Filter app/code/community/Yoast/Filter

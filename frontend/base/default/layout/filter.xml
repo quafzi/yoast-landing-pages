@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.0.1">
+    <filter_index_view>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="Yoast_Filter/Result" name="filter_result" template="catalog/product/list.phtml">
+                <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                    <block type="page/html_pager" name="product_list_toolbar_pager" template="page/html/pager.phtml" />
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="Yoast_Filter/Layer_View" name="catalog.leftnav" before="-" template="catalog/layer/view.phtml"/>
+        </reference>
+    </filter_index_view>
+    <!--
+    Without layered Navigation
+
+    <filter_index_view>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="Yoast_Filter/View" name="filter.head" template="filter/view.phtml" />
+            <block type="Yoast_Filter/View" name="filter_view" template="catalog/product/list.phtml" />
+        </reference>
+    </filter_index_view>
+    -->
+</layout>
