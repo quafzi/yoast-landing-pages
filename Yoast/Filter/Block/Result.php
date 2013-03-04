@@ -54,6 +54,14 @@ class Yoast_Filter_Block_Result extends Mage_Catalog_Block_Product_List
 
             $this->_productCollection = $collection;
             Mage::getSingleton('Yoast_Filter/Layer')->setProductCollection($this->_productCollection);
+
+            if ($this->getSortby()) {
+                $this->setSortBy($this->getSortby());
+            }
+
+            if ($this->getDirection()) {
+                $this->setDefaultDirection($this->getDirection());
+            }
         }
 
         return $this->_productCollection;
