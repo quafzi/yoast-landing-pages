@@ -1,6 +1,9 @@
 <?php
 class Yoast_Filter_Block_Result extends Mage_Catalog_Block_Product_List
 {
+    protected $_defaultToolbarBlock = 'Yoast_Filter/product_list_toolbar';
+    protected $_toolbarBlock;
+
     protected function _getProductCollection()
     {
         if (is_null($this->_productCollection)) {
@@ -62,8 +65,32 @@ class Yoast_Filter_Block_Result extends Mage_Catalog_Block_Product_List
             if ($this->getDirection()) {
                 $this->setDefaultDirection($this->getDirection());
             }
+
+            if ($this->getCount()) {
+                $toolbar = $this->getToolbarBlock();
+                $limits = array_keys($this->getToolbarBlock()->getAvailableLimit());
+                $limits[] = $this->getCount();
+                array_filter($limits);
+                sort($limits);
+                foreach ($limits as $limit) {
+                    $toolbar->addPagerLimit('grid', $limit)
+                        ->addPagerLimit('list', $limit);
+                }
+                $toolbar->setDefaultGridPerPage((int)$this->getCount())
+                    ->setDefaultListPerPage((int)$this->getCount());
+            }
+
+            $this->getToolbarBlock()->setVisible($this->getPager());
         }
 
         return $this->_productCollection;
+    }
+
+    public function getToolbarBlock()
+    {
+        if (is_null($this->_toolbarBlock)) {
+            $this->_toolbarBlock = parent::getToolbarBlock();
+        }
+        return $this->_toolbarBlock;
     }
 }
