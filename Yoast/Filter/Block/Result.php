@@ -55,6 +55,18 @@ class Yoast_Filter_Block_Result extends Mage_Catalog_Block_Product_List
                 $collection->addCategoryFilter($category, true);
             }
 
+			if ($this->getSale()) {
+				$todayDate = date('m/d/y');
+				$tomorrow = mktime(0, 0, 0, date('m'), date('d')+1, date('y'));
+				$tomorrowDate = date('m/d/y', $tomorrow);
+				$collection->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
+					->addAttributeToFilter('special_to_date', array('or'=> array(
+					0 => array('date' => true, 'from' => $tomorrowDate),
+					1 => array('is' => new Zend_Db_Expr('null')))
+					), 'left'
+					);
+			}
+
             $this->_productCollection = $collection;
             Mage::getSingleton('Yoast_Filter/Layer')->setProductCollection($this->_productCollection);
 
