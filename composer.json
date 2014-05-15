@@ -1,0 +1,15 @@
+{
+    "name": "yoast/landing-pages",
+    "type": "magento-module",
+    "description": "Magento extension forked from http://www.magentocommerce.com/magento-connect/yoast-landing-pages-3982.html",
+    "license": "OSL 3.0",
+    "authors": [
+        {
+            "name": "YOAST",
+            "email": "magento@yoast.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
